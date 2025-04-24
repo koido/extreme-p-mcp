@@ -36,28 +36,41 @@ This project is under active development. APIs and features may change without n
 
 ## Setup and Running
 
-### Install dependencies
+### Add the MCP server to your MCP server list (Claude, Cursor, etc.)
 
-```bash
-uv sync
+```json
+{
+    "mcpServers": {
+      "ExtremeP": {
+        "command": "uv",
+        "args": ["--directory", "where you cloned the repo", "run", "server.py"],
+        "env": {}
+      }
+    }
+}
 ```
 
-### Start the server
+### Run MCP Inspector
 
 ```bash
+# Install dependencies
+uv sync
+
+# Run MCP Inspector
+uv --directory ./ run mcp dev server.py
+```
+
+### Run the MCP server
+
+```bash
+# Install dependencies
+uv sync
+
+# Run the MCP server
 uv run server.py
 ```
 
-## API Endpoint Examples
-
-- `/pvalue_extreme_z(z: float)`
-- `/pvalue_extreme_t(t: float, df: int)`
-- `/pvalue_extreme_f(f: float, df1: int, df2: int)`
-- `/pvalue_extreme_chisq(chisq: float, df: int)`
-- `/pvalue_extreme_saiget(t: float, varT: float, df: int)`
-- `/pvalue_extreme_wald(beta: float, se: float)`
-
-### Example: Using from Python
+### Example: Using from Python (not running as MCP server)
 
 ```python
 from extreme_p_helper import ExtremePHelper
